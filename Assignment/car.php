@@ -9,13 +9,15 @@ class Car{
     public string $model; //Car's model
     public int $year; //Model's release year
 
+    //Constructer
     public function __construct(string $brand, string $model, int $year)
     {
         $this->brand = $brand;
         $this->model = $model;
         $this->year = $year;
     }
-
+    
+    //Call function
     public function getBadge(): string{
         return "Brand: {$this->brand} | Model: {$this->model} | Year: {$this->year}";
     }
