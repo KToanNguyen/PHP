@@ -68,3 +68,12 @@ class Person {
 $person = new Person("Jessica", 40, true); 
 
 echo $person->getBadge(); 
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,7 @@
+<?php 
+
+/* 
+
 Lab One Instructions: 
 
 1.) Clone or download the Lab One starter files from the course GitHub repository.
@@ -8,3 +12,11 @@ Lab One Instructions:
 7.) Congrats! All done! Add me as a collaborator to your repository (username: JessicaGilfilan) and submit a github link to your completed lab on Blackboard. (/2 marks)
 
 /16 marks 
+
+*/ 
+
+require "header.php";
+require "connect.php";  
+echo "<p> Follow the instructions outlined in instructions.txt to complete this lab. Good luck & have fun!😀 </p>";
+include "car.php"; 
+require "footer.php"; 
