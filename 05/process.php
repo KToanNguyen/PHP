@@ -1,5 +1,5 @@
 <?php
-
+//require the database
 require "includes/connect.php";  
 
 /*1*/
@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     die('Invalid request');
 }
 
-/*2*/
+/*2 Sanitize data */ 
 $firstName = trim(filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_SPECIAL_CHARS));
 $lastName  = trim(filter_input(INPUT_POST, 'last_name', FILTER_SANITIZE_SPECIAL_CHARS));
 $email     = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
@@ -67,7 +67,29 @@ if (!empty($errors)) {
 }
 
 /*4*/
+//Build query
 
+$sql = "INSERT INTO order (first_name, last_name, phone, address, email, comments) VALUE (:first_name, :last_name, :address, :email, :comments)";
+
+//Prepare the query
+
+$stmt = $pdo->prepare($sql);
+
+//Map the named placeholder to the user data/actual data
+
+$stmt->bindParam(':first_name', $firstName);
+$stmt->bindParam(':last_name', $lastName);
+$stmt->bindParam(':phone', $phone);
+$stmt->bindParam(':email', $email);
+$stmt->bindParam(':address', $address);
+
+//Execute the query
+
+$stmt->execute();
+
+//Close the connection
+
+$pdo=null;
 
 ?>
 <? require "includes/header.php"; ?> 
