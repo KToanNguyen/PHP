@@ -1,7 +1,8 @@
 <?php
 //TODO:
+require "includes/process.php";
+require "includes/header.php";
 require "includes/connect.php";
-
 /*
   TODO:
   1. Write a SELECT query to get all subscribers

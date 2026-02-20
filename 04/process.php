@@ -1,4 +1,4 @@
-04/process.php<?php 
+<?php 
 require "includes/header.php"; 
 // access the form data and then echo on the screen in a confirmation message 
 //use $_POST to grab info using the form, store in a variable, the key is the name attribute value from the form

@@ -20,6 +20,6 @@
             <a href="/"> Home </a>
             <a href="#"> About </a>
             <a href="#"> Order Online </a>
-            <a href="contact.php"> Contact </a>
+            <a href="#"> Contact </a>
         </nav>
     </header>

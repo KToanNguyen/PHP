@@ -12,7 +12,7 @@
         <label for="last_name" class="form-label">Last name</label>
         <input type="text" id="last_name" name="last_name" class="form-control">
         <label for="phone" class="form-label">Phone number</label>
-        <input type="tel" id="phone" name="phone" placeholder="555-555-5555" class="form-control">
+        <input type="tel" id="phone" name="phone" placeholder="555-123-4567" class="form-control">
         <label for="address" class="form-label">Address</label>
         <input type="text" id="address" name="address" class="form-control">
         <label for="email" class="form-label">Email</label>
@@ -20,7 +20,7 @@
     </fieldset>
 
     <!-- Order Details -->
-    <!-- <fieldset>
+    <!--<fieldset>
       <legend>Order Details</legend>
 
       <p>
@@ -89,20 +89,20 @@
         </tbody>
       </table>
 
-    </fieldset> -->
+    </fieldset>-->
 
     <fieldset>
       <legend>Additional Comments</legend>
 
       <p>
-        <label for="comments" class="form-control">Comments (optional)</label><br>
+        <label for="comments" class="form-label">Comments (optional)</label><br>
         <textarea id="comments" name="comments" rows="4"
           placeholder="Allergies, delivery instructions, custom messages..." class="form-control"></textarea>
       </p>
     </fieldset>
 
     <p>
-      <button type="submit" class="btn btn-secondary">Place Order</button>
+      <button type="submit" class="btn btn-primary">Place Order</button>
     </p>
 
   </form>
