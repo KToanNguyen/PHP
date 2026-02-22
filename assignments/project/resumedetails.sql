@@ -7,4 +7,5 @@ CREATE TABLE resumedetails (
     email      VARCHAR(150) UNIQUE,
     num      VARCHAR(20),
     sum    TEXT
-);
+); 
+-- SQL code for "resumedetails"

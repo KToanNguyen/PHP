@@ -1,10 +1,12 @@
 <?php
+//Make sure the page is connected to the database
 require "add/connect.php";
 
+//Make sure the form is in POST method
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     die('Invalid request');
 }
-
+    //Data santization 
     $firstName = trim($_POST['first_name'] ?? '');
     $lastName  = trim($_POST['last_name'] ?? '');
     $email     = trim($_POST['email'] ?? '');
@@ -14,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $sum       = trim($_POST['sum'] ?? '');
     $errors = [];
 
+    //Data validation
     if ($firstName === null || $firstName === '') {
     $errors[] = "First name has not been entered.";
     }
@@ -48,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         $errors[] = "Your summary need to be filled out. No summary can lead to lower hiring chances.";
     }
     
+    //Error
     if (!empty($errors)) {
     
     echo "<div class='alert alert-danger'>";
@@ -62,31 +66,54 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-try{
+try{ //Function for inserting and updating data
     $stmt = $pdo->prepare(
         "INSERT INTO resumedetails (first_name, last_name, pos, skills, email, num, sum)
-        VALUES (:first_name, :last_name, :pos, :skills, :email, :num, :sum)"
+        VALUES (:first_name, :last_name, :pos, :skills, :email, :num, :sum)
+        ON DUPLICATE KEY UPDATE
+            first_name = VALUES(first_name),
+            last_name  = VALUES(last_name),
+            pos        = VALUES(pos),
+            skills     = VALUES(skills),
+            email      = VALUES(email),
+            num        = VALUES(num),
+            sum        = VALUES(sum)"
     );
-
+    //Execute
     $stmt->execute([':first_name' => $firstName, ':last_name' => $lastName, ':pos' => $pos, ':skills' => $skills, ':email' => $email, ':num' => $num, ':sum' => $sum]);
-
+    //Invoice ID
     $resumeId = $pdo->lastInsertId();
 }
-catch (PDOException $e) {
+catch (PDOException $e) {//Error
     die("Database error: " . $e->getMessage());
 }
 ?>
+<!-- Submitted form display -->
 <?php require "add/header.php"; ?>
     <main>
-        <h1>Resume</h1>
-        <p>Name: <?= htmlspecialchars($firstName) . " " . htmlspecialchars($lastName); ?></p>
-        <p>Current Position: <?= htmlspecialchars($pos); ?></p>
-        <p>Skills: <?= htmlspecialchars($skills); ?></p>
-        <p>Email: <?= htmlspecialchars($email); ?></p>
-        <p>Phone Number: <?= htmlspecialchars($num); ?></p>
+        <form>
+            <fieldset>
+                <legend id="big">Resume Display</legend>
+                <legend>Name: <?= htmlspecialchars($firstName) . " " . htmlspecialchars($lastName); ?></legend>
+                <legend>Current Position: <?= htmlspecialchars($pos); ?></legend>
+                <legend>Skills: <?= htmlspecialchars($skills); ?></legend>
+                <legend>Email: <?= htmlspecialchars($email); ?></legend>
+                <legend>Phone Number: <?= htmlspecialchars($num); ?></legend>
+            </fieldset>
 
-        <h2>Summary</h2>
-        <p><?= nl2br(htmlspecialchars($sum)); ?></p>
+            <fieldset>
+                <legend id="big">Summary</legend>
+                <legend><?= nl2br(htmlspecialchars($sum)); ?></legend>
+            </fieldset>
+        </form>
+
+        <form action="index.php" method="post">
+            <button type="update">Update</button>
+        </form>
+
+        <form action="thank.php" method="post">
+            <button type="submit">Submit</button>
+        </form>
     </main>
 </body>
 <?php require "add/footer.php"; ?>

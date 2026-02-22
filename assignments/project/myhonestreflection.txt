@@ -1,0 +1,15 @@
+To Mrs. Gillfian,
+
+At this moment, after the assignment, I'm still a bit overwhelmed, but I hope this won't turn into a mess. 
+Frankly, I am not so sure what to say about this project. I find it both complicated and easy at the same time. 
+"Complicated" because I did not think that I have to create a number of file, I did not think that I had to 
+write an amount of code, which led to my underestimation for this project and my late submission. I also kept 
+having issues with my files and database because they did not connect well, and I had to take references from 
+the Internet to fix my problem. And the worst of all, I had to deal with my messy head because I got overwhelmed. 
+Now I have done all of the phase 1, I realize that it is not that difficult, since nearly everything I used was 
+what I had learnt in this course (but still, I have to admit that I asked ChatGPT for some references). I also 
+fixed all of my connection and they are running quite well. Overall, I think this project is quite fun. It has 
+some difficulty, but not too much. I just hope that I could, and would, do better in the phase 2.
+
+Khanh Toan Nguyen
+Student ID: 200648395
