@@ -1,9 +1,10 @@
 <?php
-require "includes/header.php";
+require "includes\header.php";
 //  TODO: connect to the database 
-require "includes/connect.php";
-require "includes/process.php";
+require "includes\connect.php";
+require "includes\process.php";
 //   TODO: Grab form data (no validation or sanitization for this lab)
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $firstName = $_POST['first_name'] ?? '';
 $lastName = $_POST['last_name'] ?? '';
 $email = $_POST['email'] ?? '';
@@ -20,6 +21,11 @@ $stmt->execute([
     ':last_name' => $lastName,
     ':email' => $email
 ]);
+} else {
+    // Redirect if accessed directly (optional but clean)
+    header("Location: index.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,3 +52,4 @@ $stmt->execute([
 </body>
 
 </html>
+<?php require "includes\footer.php"; ?>

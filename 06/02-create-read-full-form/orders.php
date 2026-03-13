@@ -6,7 +6,7 @@ require "includes/connect.php"; // connect to db
 $sql = "SELECT * FROM orders1 ORDER BY created_at DESC"; 
 
 //prepare
-$stmt = $pdo->prepare($sql);  
+$stmt = $_pdo->prepare($sql);  
 
 //execute 
 $stmt->execute(); 
