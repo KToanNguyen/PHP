@@ -1,4 +1,6 @@
 <?php
+require "add/auth.php";
+
 require "add/connect.php";
 require "add/header.php";
 
@@ -14,7 +16,7 @@ if (isset($_GET['delete_id'])) {
 $resumes = $pdo->query("SELECT id, first_name, last_name, email, pos FROM resumedetails")->fetchAll();
 ?>
 
-<h2>Resume Management</h2>
+<h2>Resume Management (A feature for admin only)</h2>
 <table>
     <tr>
         <th>Name</th>

@@ -11,16 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($email) || empty($password)) {
         $error = "Please fill in all fields.";
     } else {
-        // 1. Fetch the user by email
+        // Fetch the user by email
         $stmt = $pdo->prepare("SELECT id, username, password FROM acc WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
-        // 2. Verify password
+        // Verify password
         // Note: This assumes you stored the password using password_hash()
         if ($user && password_verify($password, $user['password'])) {
             
-            // 3. Success! Regenerate session ID for security (prevents session hijacking)
+            // Success! Regenerate session ID for security (prevents session hijacking)
             session_regenerate_id();
             
             $_SESSION['user_id']   = $user['id'];

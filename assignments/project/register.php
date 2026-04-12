@@ -26,10 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
     $confirmPassword = $_POST['confirm_password'] ?? '';
 
-    // -----------------------------
-    // Server-side Validation
-    // -----------------------------
-
     // Check that a username was entered
     if ($username === '') {
         $errors[] = "Username is required.";
@@ -41,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     // Validate the email format
     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Email must be a valid email address.";
+        $errors[] = "Valid email required.";
     }
 
     // Check that a password was entered
@@ -64,10 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Password must be at least 8 characters long.";
     }
 
-    // --------------------------------------------------
-    // Check if the username or email already exists
-    // --------------------------------------------------
-
     // Only check the database if there are no validation errors so far
     if (empty($errors)) {
 
@@ -86,13 +78,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // If a record is returned, the username or email is already in use
         if ($stmt->fetch()) {
-            $errors[] = "That username or email is already in use.";
+            $errors[] = "Username or email already used.";
         }
     }
-
-    // --------------------------------------------------
-    // Insert the new user into the database
-    // --------------------------------------------------
 
     // Only insert if there are still no errors
     if (empty($errors)) {
@@ -117,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute();
 
         // Set a success message
-        $success = "Account created successfully. You can now log in.";
+        $success = "Account created successfully!";
     }
 }
 ?>
