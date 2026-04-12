@@ -13,3 +13,10 @@ some difficulty, but not too much. I just hope that I could, and would, do bette
 
 Khanh Toan Nguyen
 Student ID: 200648395
+
+Update for phase 2:
+
+This is my phase 2 update. After the project phase 2, I realize that PHP, despite being called a "dying language", has helped me
+in some part of my computer study. Though I dont really like the language itself, I still have to admit that PHP is like a fundamental
+program to help me understand about the relationship between client and server, which will also help me if I want to become a web
+developer in the future.
