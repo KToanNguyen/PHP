@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    // Not logged in? Kick them back to the login page
+    header("Location: login.php");
+    exit;
+}
+?>
 <?php require "add/header.php"; ?>
 <!-- Form submission page -->
     <main>
